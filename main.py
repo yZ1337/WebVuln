@@ -4,6 +4,9 @@ from colorama import Fore, Style
 import requests
 import argparse
 import builtwith
+import subprocess
+import os
+import sys
 
 print(f"Created By: {Fore.LIGHTMAGENTA_EX}yZ {Style.RESET_ALL}\n")
 
@@ -47,13 +50,26 @@ def check_technologies(url):
     except Exception as e:
         print(f"{Fore.RED}[ERROR] {Style.RESET_ALL}Failed to retrieve technology data for {url}. Error: {e}")
 
+def check_waf(url):
+    try:
+        wafw00f_path = os.path.join(os.path.dirname(__file__), 'wafw00f', 'wafw00f', 'main.py')
+        result = subprocess.run([sys.executable, wafw00f_path, url], capture_output=True, text=True)
+        output = result.stdout
+        if "No WAF detected" in output:
+            print(f"\nNo WAF detected on {url}.")
+        else:
+            print(f"\nWAF detected on {url}:\n{Fore.LIGHTGREEN_EX}{output}{Style.RESET_ALL}")
+    except Exception as e:
+        print(f"{Fore.RED}[ERROR] {Style.RESET_ALL}Failed to check WAF for {url}. Error: {e}")
+
 def main():
-    parser = argparse.ArgumentParser(description='Check security headers and web technologies for a given URL.')
-    parser.add_argument('-u', '--url', type=str, required=True, help='URL to check for security headers and web technologies')
+    parser = argparse.ArgumentParser(description='Check security headers, web technologies, and WAF for a given URL.')
+    parser.add_argument('-u', '--url', type=str, required=True, help='URL to check for security headers, web technologies, and WAF')
     args = parser.parse_args()
 
     check_security_headers(args.url)
     check_technologies(args.url)
+    check_waf(args.url)
 
 if __name__ == '__main__':
     main()
