@@ -30,3 +30,10 @@ def check_libraries():
         print("colorama is not installed. Installing now...")
         install_package('colorama')
         from colorama import Fore, Back, Style
+
+    try:
+        import wafw00f
+    except ImportError:
+        print("wafw00f is not installed. Installing now...")
+        install_package('wafw00f')
+        import wafw00f
