@@ -37,3 +37,10 @@ def check_libraries():
         print("wafw00f is not installed. Installing now...")
         install_package('wafw00f')
         import wafw00f
+
+    try:
+        import nmap
+    except ImportError:
+        print("nmap is not installed. Installing now...")
+        install_package('python-nmap')
+        import nmap
