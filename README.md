@@ -1,4 +1,4 @@
-![bbec08a0-a05a-4dcf-8d45-2fd8d0cf8e75](https://github.com/yZ1337/WebVuln/assets/32521997/a6a99a87-7c57-4faa-8c97-b98d45dffacc)
+![5303aec0-6b88-4325-aa69-2cb47b157af0](https://github.com/yZ1337/WebVuln/assets/32521997/7b96ef25-e1e0-4237-bb23-db78626c2409)
 
 # WebVuln
 Simple Python script that checks for a couple security issues of a website by url
