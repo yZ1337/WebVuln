@@ -30,3 +30,10 @@ def check_libraries():
         print("colorama is not installed. Installing now...")
         install_package('colorama')
         from colorama import Fore, Back, Style
+
+    try:
+        from bs4 import BeautifulSoup
+    except ImportError:
+        print("bs4 is not installed. Installing now...")
+        install_package('bs4')
+        from bs4 import BeautifulSoup
