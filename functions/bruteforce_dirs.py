@@ -3,7 +3,7 @@ import requests
 from colorama import Fore, Style
 
 def brute_force_directories(url):
-    directories = ["admin", "login", "dashboard", "config", "backup"]
+    directories = ["admin", "login", "dashboard", "config", "backup", "robots.txt", "sitemap.xml"]
     print(f"\nDirectory brute-forcing for {url}:\n")
     for directory in directories:
         dir_url = urljoin(url, directory)
